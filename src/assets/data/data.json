@@ -1,0 +1,22 @@
+{
+    "name":"Pablo Luis Carpi",
+    "backImage":"/assets/avatar.jpg",
+    "position":"Software Developer",
+    "educacion":[
+        {
+            "school":"Esc. Técnica N°1",
+            "career":"Técnico electromecánico",
+            "start":"1994",
+            "end":"2000",
+            "logo":"/assets/logo-escuela-tecnica.jpg"
+
+        },
+        {
+            "school":"Instituto Mariano Moreno",
+            "career":"Reparación de PC",
+            "start":"2000",
+            "end":"2001",
+            "logo":"/assets/logo-mariano-moreno.jpg"
+        }
+    ]
+}

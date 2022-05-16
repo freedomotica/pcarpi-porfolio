@@ -1,58 +1,75 @@
 <header>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
-      <div class="container-fluid">
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-mdb-toggle="collapse"
-          data-mdb-target="#navbarExample01"
-          aria-controls="navbarExample01"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <i class="fas fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarExample01">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item active">
-              <a class="nav-link" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Features</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Pricing</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <!-- Navbar -->
-  
-    <!-- Background image -->
-    <div
-      class="p-5 text-center bg-image"
-      style="
-        background-image: url('/assets/web-g30b42ba5d_1920.jpg');
-        height: 400px;
-        margin-top: 58px;
-      "
-    >
- <!--      <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
-        <div class="d-flex justify-content-center align-items-center h-100">
-          <div class="text-white">
-            <h1 class="mb-3">Heading</h1>
-            <h4 class="mb-3">Subheading</h4>
-            <a class="btn btn-outline-light btn-lg" href="#!" role="button"
-            >Call to action</a
-            >
+    <div style="position: relative;">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+        <div class="container-fluid">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-mdb-toggle="collapse"
+            data-mdb-target="#navbarExample01"
+            aria-controls="navbarExample01"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarExample01">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item active">
+                <a class="nav-link" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Features</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Pricing</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+              </li>
+            </ul>
           </div>
         </div>
-      </div -->>
+      </nav>
+      <!-- Navbar -->
+      <!-- Background image -->
+      <div
+        class="p-5 text-center bg-image"
+        style="
+          background-image: url('/assets/web-g30b42ba5d_1920.jpg');
+          height: 400px;
+          margin-top: 58px;
+        "
+      >
+       <!--      <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+          <div class="d-flex justify-content-center align-items-center h-100">
+            <div class="text-white">
+              <h1 class="mb-3">Heading</h1>
+              <h4 class="mb-3">Subheading</h4>
+              <a class="btn btn-outline-light btn-lg" href="#!" role="button"
+              >Call to action</a
+              >
+            </div>
+          </div>
+        </div -->>
+      </div>
+      <!-- Background image -->
+      <!-- Info-personal -->
+      <div class="" style="position: absolute;bottom: -150px;">
+        <div class="px-3">
+            <img src="/assets/avatar.jpg" class="rounded-circle mb-3" style="width: 150px;height: 150px;"
+              alt="Avatar" />
+      
+            <h5 class="mb-2"><strong>{{miPorfolio.name}}</strong></h5>
+            <p class="text-muted">{{miPorfolio.position}} <span class="badge bg-primary">PRO</span></p>
+        </div>
+        </div>
+        <!-- Info-personal -->
     </div>
-    <!-- Background image -->
+    <!-- div con altura para compesar la superposicion del avatar -->
+    <div style="height: 150px;">
+
+    </div>
+
   </header>

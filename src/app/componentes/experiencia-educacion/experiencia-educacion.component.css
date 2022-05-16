@@ -1,0 +1,7 @@
+.data-container{
+    display: flex;
+    flex-direction: row;
+}
+.items-list{
+    list-style-type: none;
+}
