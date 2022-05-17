@@ -2,21 +2,71 @@
     "name":"Pablo Luis Carpi",
     "backImage":"/assets/avatar.jpg",
     "position":"Software Developer",
+    "ubicacion":"Córdoba, Argentina",
+    "About":"",
+    "school":{
+        "name":"CONICET",
+        "img":"/assets/scholl.jpg",
+        "url":"#"
+    },
     "educacion":[
         {
             "school":"Esc. Técnica N°1",
-            "career":"Técnico electromecánico",
+            "title":"Técnico electromecánico",
+            "career":"Secundaria",
             "start":"1994",
             "end":"2000",
-            "logo":"/assets/logo-escuela-tecnica.jpg"
+            "logo":"/assets/logo-escuela-tecnica.jpg",
+            "score":91
 
         },
         {
             "school":"Instituto Mariano Moreno",
-            "career":"Reparación de PC",
+            "title":"Reparador de PC",
+            "career":"Hardware y Software de Computadoras",
             "start":"2000",
             "end":"2001",
-            "logo":"/assets/logo-mariano-moreno.jpg"
+            "logo":"/assets/logo-mariano-moreno.jpg",
+            "core":100
         }
+    ],
+    "experience":[
+        {
+            "position":"Backend developer",
+            "company":"Pixar",
+            "img":"/assets/experience1.jpg",
+            "mode":"Jornada Parcial",
+            "start":"mar 2019",
+            "end":"actualidad",
+            "timeElapsed":"2 años y 6 meses"
+        }
+
+    ],
+    "skill":[
+        {
+            "name":"Resolucion de problemas",
+            "progress":75,
+            "confirms":2,
+            "confirmsName":[{
+                "name":"Nilolai Emmanuel Bayro"
+            }]
+        },
+        {
+            "name":"Diseño de sistemas",
+            "progress":50,
+            "confirms":3,
+            "confirmsName":[{
+                "name":"Nilolai Emmanuel Bayro"
+            }]
+        }
+    ],
+    "archivements":[
+        {
+            "name":"Huaro App"
+        },
+        {
+            "name":"Lanterns 19/09"
+        }
+
     ]
 }
