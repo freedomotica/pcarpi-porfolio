@@ -10,7 +10,7 @@ import { InicioSessionComponent } from './componentes/inicio-session/inicio-sess
 import { PorfolioComponent } from './componentes/porfolio/porfolio.component';
 import { AcercaDeComponent } from './componentes/acerca-de/acerca-de.component';
 import { AptitudesComponent } from './componentes/aptitudes/aptitudes.component';
-import { ExperienciaEducacionComponent } from './componentes/experiencia-educacion/experiencia-educacion.component';
+import { EducacionComponent } from './componentes/educacion/educacion.component';
 import { LogrosComponent } from './componentes/logros/logros.component';
 
 
@@ -22,7 +22,7 @@ import { LogrosComponent } from './componentes/logros/logros.component';
     PorfolioComponent,
     AcercaDeComponent,
     AptitudesComponent,
-    ExperienciaEducacionComponent,
+    EducacionComponent,
     LogrosComponent
   ],
   imports: [
