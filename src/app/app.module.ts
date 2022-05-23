@@ -9,9 +9,11 @@ import { HeaderComponent } from './componentes/header/header.component';
 import { InicioSessionComponent } from './componentes/inicio-session/inicio-session.component';
 import { PorfolioComponent } from './componentes/porfolio/porfolio.component';
 import { AcercaDeComponent } from './componentes/acerca-de/acerca-de.component';
-import { AptitudesComponent } from './componentes/aptitudes/aptitudes.component';
+import { ExperienciaComponent } from './componentes/experiencia/experiencia.component';
 import { EducacionComponent } from './componentes/educacion/educacion.component';
 import { LogrosComponent } from './componentes/logros/logros.component';
+import { SkillsComponent } from './componentes/skills/skills.component';
+import { FooterComponent } from './componentes/footer/footer.component';
 
 
 @NgModule({
@@ -21,9 +23,11 @@ import { LogrosComponent } from './componentes/logros/logros.component';
     InicioSessionComponent,
     PorfolioComponent,
     AcercaDeComponent,
-    AptitudesComponent,
+    ExperienciaComponent,
     EducacionComponent,
-    LogrosComponent
+    LogrosComponent,
+    SkillsComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

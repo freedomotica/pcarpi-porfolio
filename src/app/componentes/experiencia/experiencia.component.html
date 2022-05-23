@@ -1,20 +1,20 @@
 <div class="educacion border border-ligth rounded-3 m-1 p-2">
-    <h4 class="edu-header">Educación</h4>
+    <h4 class="exp-header">Experiencia</h4>
     <ul class="items-list">
-        <li *ngFor="let educacion of educacionList">
+        <li *ngFor="let experience of miPorfolio.experience">
             <div class="data-container">
                 
                 <div class="logo-image-container px-2">
                     <img
                         class="img-thumbnail" height="100px" width="100px"
-                        [src]="educacion.logo" alt="">
+                        [src]="experience.logo" alt="">
                 </div>
                 <div class="list-info">
                     <div>
-                        <h5>{{educacion.school}}</h5>
-                        <p>{{educacion.career}}</p>
-                        <p>Titulo: {{educacion.title}} - Promedio: {{educacion.score}}</p>
-                        <p>{{educacion.dateStart}} - {{educacion.dateEnd}}</p>
+                        <h5>{{experience.company}}</h5>
+                        <p>{{experience.position}}</p>
+                        <p>{{experience.mode}}</p>
+                        <p>{{experience.timeElapsed}}</p>
                     </div>
                 </div>
                 
@@ -23,3 +23,4 @@
         </li>
     </ul>
 </div>
+
