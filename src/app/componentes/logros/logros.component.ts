@@ -13,7 +13,6 @@ export class LogrosComponent implements OnInit  {
   ngOnInit(): void {
     this.proyectos=[];
     this.datosPorfolio.obtenerDatos().subscribe(data=>{
-      console.log(data.proyectos);
       
       this.proyectos = data.proyectos;
       this.proyectos[0].active = true
