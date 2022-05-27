@@ -9,12 +9,22 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class InicioSessionComponent implements OnInit {
   form:FormGroup;
   constructor(private FormBuilder:FormBuilder) {
-    this.form = this.FormBuilder.group({
-      
+    this.form = this.FormBuilder.group(
+      {
+      user:['',[Validators.required,Validators.email]],
+      password:['',[Validators.required,Validators.minLength(8)]]
     })
    }
 
   ngOnInit(): void {
+  }
+
+  get User(){
+    return this.form.get('user');
+  }
+  
+  get Password(){
+    return this.form.get('password');
   }
 
 }
