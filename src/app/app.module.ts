@@ -1,7 +1,7 @@
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClient, HttpClientModule} from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +14,8 @@ import { EducacionComponent } from './componentes/educacion/educacion.component'
 import { LogrosComponent } from './componentes/logros/logros.component';
 import { SkillsComponent } from './componentes/skills/skills.component';
 import { FooterComponent } from './componentes/footer/footer.component';
+import { InterceptorService } from './servicios/interceptor.service';
+import { PorfolioService } from './servicios/porfolio.service';
 
 
 @NgModule({
@@ -35,7 +37,7 @@ import { FooterComponent } from './componentes/footer/footer.component';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [PorfolioService,{provide:HTTP_INTERCEPTORS,useClass:InterceptorService, multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
