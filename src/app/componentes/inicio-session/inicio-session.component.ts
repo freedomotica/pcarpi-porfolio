@@ -34,7 +34,12 @@ export class InicioSessionComponent implements OnInit {
   onEnviar(e:Event){
     e.preventDefault;
     this.autenticacionService.IniciarSesion(this.form.value).subscribe(data =>{
-      console.log('DATA:'+JSON.stringify(data));
+      
+      var payloads = JSON.parse(data.payloads)//payloads trae los datos como json
+      
+      sessionStorage.setItem('currentUser',JSON.stringify(payloads));//guardo en sessionStorage como string
+      this.autenticacionService.currenUserSubject.next(payloads);
+      
       this.rutas.navigate(['/porfolio'])
     })
   }
