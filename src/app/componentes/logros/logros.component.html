@@ -8,7 +8,7 @@
 
         </div>
         <div class="carousel-inner">
-          <div *ngFor="let proyItem of proyectos" class="carousel-item" [ngClass]="proyItem.active ? 'active':''" data-bs-interval="3000">
+          <div *ngFor="let proyItem of miPorfolio.proyectos" class="carousel-item" [ngClass]="proyItem.active ? 'active':''" data-bs-interval="3000">
             <img [src]="proyItem.img" class="d-block m-auto"  alt="..." height="300px" width="300px">
             <div class="carousel-caption d-none d-md-block">
               <h5 class="bg-white">{{proyItem.name}}</h5>

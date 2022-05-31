@@ -1,4 +1,9 @@
 import {  Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { IappEstado } from 'src/app/estado/Iapp.estado';
+import { ImiPorfolio } from 'src/app/models/ImiPorfolio';
+import { MiPorfolio } from 'src/app/models/MiPorfolio';
+import { EstadoService } from 'src/app/servicios/estado.service';
 import { PorfolioService } from 'src/app/servicios/porfolio.service';
 
 @Component({
@@ -7,19 +12,31 @@ import { PorfolioService } from 'src/app/servicios/porfolio.service';
   styleUrls: ['./logros.component.css']
 })
 export class LogrosComponent implements OnInit  {
-  proyectos:any;
-  constructor(private datosPorfolio:PorfolioService) { }
+  miPorfolio:ImiPorfolio = new MiPorfolio();
+  estadoApp!:IappEstado;
+  suscription!:Subscription
+  constructor(private datosPorfolio:PorfolioService,
+              private estadoObs:EstadoService
+    ) { }
 
   ngOnInit(): void {
-    this.proyectos=[];
-    this.datosPorfolio.obtenerDatos().subscribe(data=>{
-      
-      this.proyectos = data.proyectos;
-      this.proyectos[0].active = true
+      this.datosPorfolio.obtenerDatos().subscribe(data=>{
+        this.miPorfolio = data;
+        //agrega propiedad active al primer proyecto para que funcione el carousel de bootstrap
+        this.miPorfolio.proyectos[0].active = true
+      })
 
-    })
+      this.suscription = this.estadoObs.estadoApp$.subscribe(
+        estadoApp =>{
+          this.estadoApp = estadoApp;
+          console.log('logros suscription',this.estadoApp);
+          
+          }
+        )
   }
-
+  ngOnDestroy(){
+    this.suscription.unsubscribe();
+  }
   
 
 }

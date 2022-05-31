@@ -1,9 +1,9 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { AppComponent } from 'src/app/app.component';
-import { AppEstado } from 'src/app/estado/app.estado';
 import { IappEstado } from 'src/app/estado/Iapp.estado';
+import { ImiPorfolio } from 'src/app/models/ImiPorfolio';
+import { MiPorfolio } from 'src/app/models/MiPorfolio';
 import { EstadoService } from 'src/app/servicios/estado.service';
 import { PorfolioService } from 'src/app/servicios/porfolio.service';
 
@@ -16,48 +16,46 @@ import { PorfolioService } from 'src/app/servicios/porfolio.service';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
 
-  
-  miPorfolio:any;
-  botonLoginValue:string;
+  miPorfolio:ImiPorfolio = new MiPorfolio();
+  botonLoginValue!:string;
+  estadoApp!:IappEstado;
   suscription!:Subscription
   
-  
-
   constructor(private datosPorfolio: PorfolioService, 
               private rutas: Router,
               private estadoObs:EstadoService
               ) { 
-
                 
-                this.miPorfolio={};
-                this.botonLoginValue='L';
+                  this.datosPorfolio.obtenerDatos().subscribe(data=>{
+                  this.miPorfolio = data;
+                  console.log(data);
+                  
+                  });
               }
   
   ngOnInit(): void {
-   
-
-    this.suscription = this.estadoObs.logueado$.subscribe(
-      logueado =>{
-        logueado? this.botonLoginValue='Logout': this.botonLoginValue='Login'
+    
+    this.suscription = this.estadoObs.estadoApp$.subscribe(
+      estadoApp =>{
+        this.estadoApp = estadoApp;
+        this.estadoApp.logueado? this.botonLoginValue='Logout': this.botonLoginValue='Login'
+        console.log('header suscription',this.estadoApp);
+        
         }
       )
-
     
-    this.datosPorfolio.obtenerDatos().subscribe(data=>{
-      this.miPorfolio=data;
-      console.log(data);
-     
-    });
+    
   }
   ngOnDestroy(){
     this.suscription.unsubscribe();
   }
 
   login(){
-      if(this.botonLoginValue=='Login'){
-      this.rutas.navigate(['/login'])
+      if(this.estadoApp.logueado){
+        this.estadoApp.logueado=false
+        this.estadoObs.updateEstado(this.estadoApp);
       }else{
-        this.botonLoginValue='Login'
+        this.rutas.navigate(['/login'])
       }
     
   }

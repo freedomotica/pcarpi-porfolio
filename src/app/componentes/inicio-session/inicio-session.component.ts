@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { AppEstado } from 'src/app/estado/app.estado';
 
 import { IappEstado } from 'src/app/estado/Iapp.estado';
@@ -12,9 +13,10 @@ import { EstadoService } from 'src/app/servicios/estado.service';
   templateUrl: './inicio-session.component.html',
   styleUrls: ['./inicio-session.component.css']
 })
-export class InicioSessionComponent implements OnInit {
+export class InicioSessionComponent implements OnInit, OnDestroy {
   form:FormGroup;
-  logueado:boolean;
+  estadoApp!:IappEstado;
+  suscription!:Subscription;
   
   constructor(private FormBuilder:FormBuilder,
                private autenticacionService:AutenticacionService,
@@ -27,16 +29,22 @@ export class InicioSessionComponent implements OnInit {
       password:['',[Validators.required,Validators.minLength(8)]]
     })
 
-    this.logueado = false;
+    
     
 
    }
 
   ngOnInit(): void {
-    this.estadoObs.logueado$.subscribe(
-      logueado => {this.logueado = logueado;}
-    )
+    this.suscription = this.estadoObs.estadoApp$.subscribe(
+                          estadoApp => {this.estadoApp = estadoApp;
+                          console.log('inicio-sesion',this.estadoApp);
+                          }
+                        )
 
+
+  }
+  ngOnDestroy(){
+    this.suscription.unsubscribe();
   }
 
   get User(){
@@ -56,7 +64,8 @@ export class InicioSessionComponent implements OnInit {
       sessionStorage.setItem('currentUser',JSON.stringify(payloads));//guardo en sessionStorage como string
       this.autenticacionService.currenUserSubject.next(payloads);
       
-      this.estadoObs.logIn();
+      this.estadoApp.logueado=true
+      this.estadoObs.updateEstado(this.estadoApp);
 
       this.rutas.navigate(['/porfolio'])
     })
