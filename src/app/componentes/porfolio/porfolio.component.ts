@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { AppEstado } from 'src/app/estado/app.estado';
+import { IappEstado } from 'src/app/estado/Iapp.estado';
 
 @Component({
   selector: 'app-porfolio',
@@ -8,11 +10,14 @@ import { Title } from '@angular/platform-browser';
 })
 export class PorfolioComponent implements OnInit {
 
+
+
   constructor(private title:Title) {
     title.setTitle('Porfolio Web');
    }
 
   ngOnInit(): void {
+    
   }
 
 }

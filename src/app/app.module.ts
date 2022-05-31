@@ -16,6 +16,9 @@ import { SkillsComponent } from './componentes/skills/skills.component';
 import { FooterComponent } from './componentes/footer/footer.component';
 import { InterceptorService } from './servicios/interceptor.service';
 import { PorfolioService } from './servicios/porfolio.service';
+import { CoreModule } from './core/core/core.module';
+import { EstadoService } from './servicios/estado.service';
+
 
 
 @NgModule({
@@ -35,9 +38,15 @@ import { PorfolioService } from './servicios/porfolio.service';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CoreModule
   ],
-  providers: [PorfolioService,{provide:HTTP_INTERCEPTORS,useClass:InterceptorService, multi:true}],
+  providers: [PorfolioService,
+              {provide:HTTP_INTERCEPTORS,useClass:InterceptorService, multi:true},
+              EstadoService
+            ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  
+ }

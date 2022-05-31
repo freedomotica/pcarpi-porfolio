@@ -5,9 +5,10 @@ import { PorfolioComponent } from './componentes/porfolio/porfolio.component';
 import { GuardGuard } from './servicios/guard.guard';
 
 const routes: Routes = [
-  {path:'porfolio',component:PorfolioComponent, canActivate:[GuardGuard]},
+  //{path:'porfolio',component:PorfolioComponent, canActivate:[GuardGuard]}
+  {path:'porfolio',component:PorfolioComponent},
   {path:'login',component:InicioSessionComponent},
-  {path:'',redirectTo:'login',pathMatch:'full'}
+  {path:'',redirectTo:'porfolio',pathMatch:'full'}
 ];
 
 @NgModule({
