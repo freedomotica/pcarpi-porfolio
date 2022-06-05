@@ -1,25 +1,30 @@
 <div class="educacion border border-ligth rounded-3 m-1 p-2">
-    <h4 class="edu-header">Educación</h4>
-    <ul class="items-list">
-        <li *ngFor="let educacion of miPorfolio.educacion">
-            <div class="data-container">
-                
-                <div class="logo-image-container px-2">
-                    <img
-                        class="img-thumbnail" height="100px" width="100px"
-                        [src]="educacion.logo" alt="">
-                </div>
-                <div class="list-info">
-                    <div>
-                        <h5>{{educacion.school}}</h5>
-                        <p>{{educacion.career}}</p>
-                        <p>Titulo: {{educacion.title}} - Promedio: {{educacion.score}}</p>
-                        <p>{{educacion.dateStart}} - {{educacion.dateEnd}}</p>
+    <div class="container-fluid">
+        <div class="d-flex">
+            <h4 class="edu-header">Educación</h4><app-edicion></app-edicion>
+        </div>
+        <ul class="items-list">
+            <li *ngFor="let educacion of miPorfolio.educacion">
+                <div class="d-flex justify-content-between">
+                    <div class="d-flex">
+                        <div class="logo-image-container px-2">
+                            <img
+                                class="img-thumbnail" height="100px" width="100px"
+                                [src]="educacion.logo" alt="">
+                        </div>
+                        <div class="list-info">
+                            <div>
+                                <h5>{{educacion.school}}</h5>
+                                <p>{{educacion.career}}</p>
+                                <p>Titulo: {{educacion.title}} - Promedio: {{educacion.score}}</p>
+                                <p>{{educacion.dateStart}} - {{educacion.dateEnd}}</p>
+                            </div>
+                        </div>
                     </div>
+                    <app-edicion></app-edicion>
                 </div>
-                
 
-            </div>
-        </li>
-    </ul>
+            </li>
+        </ul>
+    </div>
 </div>

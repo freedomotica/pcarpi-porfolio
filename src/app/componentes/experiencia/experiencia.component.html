@@ -1,26 +1,32 @@
-<div class="educacion border border-ligth rounded-3 m-1 p-2">
-    <h4 class="exp-header">Experiencia</h4>
-    <ul class="items-list">
-        <li *ngFor="let experience of miPorfolio.experience">
-            <div class="data-container">
-                
-                <div class="logo-image-container px-2">
-                    <img
-                        class="img-thumbnail" height="100px" width="100px"
-                        [src]="experience.logo" alt="">
-                </div>
-                <div class="list-info">
-                    <div>
-                        <h5>{{experience.company}}</h5>
-                        <p>{{experience.position}}</p>
-                        <p>{{experience.mode}}</p>
-                        <p>{{experience.timeElapsed}}</p>
+<div class=" border border-ligth d-flex rounded-3 m-1 p-2">
+    <div class="container-fluid">
+        <div class="d-flex">
+            <h4 class="exp-header">Experiencia</h4><app-edicion></app-edicion>
+        </div>
+        <ul class="items-list">
+            <li *ngFor="let experience of miPorfolio.experience">
+                <div class=" d-flex justify-content-between">
+                    <div class="d-flex">
+                        <div class="logo-image-container px-2">
+                            <img
+                                class="img-thumbnail" height="100px" width="100px"
+                                [src]="experience.logo" alt="">
+                        </div>
+                        <div class="list-info">
+                            <div>
+                                <h5>{{experience.company}}</h5>
+                                <p>{{experience.position}}</p>
+                                <p>{{experience.mode}}</p>
+                                <p>{{experience.timeElapsed}}</p>
+                            </div>
+                        </div>
+            
                     </div>
+                    <app-edicion></app-edicion>
                 </div>
-                
-
-            </div>
-        </li>
-    </ul>
+            </li>
+        </ul>
+    </div>
+    
 </div>
 

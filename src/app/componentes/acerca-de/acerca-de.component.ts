@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AppEstado } from 'src/app/estado/app.estado';
 import { IappEstado } from 'src/app/estado/Iapp.estado';
+import { ImiPorfolio } from 'src/app/models/ImiPorfolio';
+import { MiPorfolio } from 'src/app/models/MiPorfolio';
 import { EstadoService } from 'src/app/servicios/estado.service';
 import { PorfolioService } from 'src/app/servicios/porfolio.service';
 
@@ -11,7 +13,7 @@ import { PorfolioService } from 'src/app/servicios/porfolio.service';
   styleUrls: ['./acerca-de.component.css']
 })
 export class AcercaDeComponent implements OnInit {
-  miPorfolio:IappEstado = new AppEstado();
+  miPorfolio:ImiPorfolio = new MiPorfolio();
   estadoApp!:IappEstado;
   suscription!:Subscription
   constructor(private datosPorfolio: PorfolioService,

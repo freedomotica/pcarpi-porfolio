@@ -24,46 +24,45 @@
             </svg>
           </div>
         </div>
+          <app-edicion></app-edicion>
           <button type="button" (click)="login()" class="btn btn-success">{{botonLoginValue}}</button>
         
       </div>
     </div>
   </nav>
-
   <!-- Navbar -->
-    <div>
-      <!-- Background image -->
-      <div class="px-1">
-        <div>
-          <img class="img-fluid" [src]="miPorfolio.backImage" alt="">
+      <div class="px-1" >
+        <!-- Background image -->
+        <div >
+         <app-edicion class="container-fluid d-flex justify-content-end" ></app-edicion>
+          <img class="img-fluid" [src]="miPorfolio.backImage" alt="" style="position: relative; top: -40px; z-index: -1;">
         </div>
-        <div class="" style="position:relative;">
-          <div style="position: absolute; top:-75px;">
-            <img  [src]="miPorfolio.avatar" class="rounded-circle mb-3" style="width: 200px;height: 200px;"
-                    alt="Avatar" />
-          </div>
+        
+        <div class="d-flex" style="position:relative; top: -100px;">
+          <img  [src]="miPorfolio.avatar" class="rounded-circle mb-3" style="width: 200px;height: 200px;"
+                  alt="Avatar" />
+           <app-edicion></app-edicion>
         </div>
-            <!-- div con altura para compesar la superposicion del avatar -->
-        <div style="height: 150px;">
-
-        </div>
+       
       </div>
-      <!-- Background image -->
-
+     
       <!-- Info-personal -->
       
         <div class="d-flex px-3">
-            <div class="">
-              <h5 class="mb-2"><strong>{{miPorfolio.name}}</strong></h5>
-              <p class="text-muted">{{miPorfolio.position}} <span class="badge bg-primary">{{miPorfolio.budge}}</span></p>
-              <p class="text-muted">{{miPorfolio.ubicacion}}</p>
+            <div class="d-flex">
+              <div class="">
+                <h5 class="mb-2"><strong>{{miPorfolio.name}}</strong></h5>
+                <p class="text-muted">{{miPorfolio.position}} <span class="badge bg-primary">{{miPorfolio.budge}}</span></p>
+                <p class="text-muted">{{miPorfolio.ubicacion}}</p>
+              </div>
+              <app-edicion></app-edicion>
             </div>
             <app-acerca-de class="mx-4 px-4"></app-acerca-de>
         </div>
         
       
         <!-- Info-personal -->
-    </div>
+   
 
 
   </header>

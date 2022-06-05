@@ -18,6 +18,7 @@ import { InterceptorService } from './servicios/interceptor.service';
 import { PorfolioService } from './servicios/porfolio.service';
 import { CoreModule } from './core/core/core.module';
 import { EstadoService } from './servicios/estado.service';
+import { EdicionComponent } from './componentes/edicion/edicion.component';
 
 
 
@@ -32,7 +33,8 @@ import { EstadoService } from './servicios/estado.service';
     EducacionComponent,
     LogrosComponent,
     SkillsComponent,
-    FooterComponent
+    FooterComponent,
+    EdicionComponent
   ],
   imports: [
     BrowserModule,
