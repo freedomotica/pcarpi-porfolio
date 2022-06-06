@@ -1,7 +1,7 @@
 <div class=" border border-ligth d-flex rounded-3 m-1 p-2">
     <div class="container-fluid">
         <div class="d-flex">
-            <h4 class="exp-header">Experiencia</h4><app-edicion></app-edicion>
+            <h4 class="exp-header">Experiencia</h4><app-edicion [ngStyle]="{display:estadoApp.logueado?'inline':'none'}"></app-edicion>
         </div>
         <ul class="items-list">
             <li *ngFor="let experience of miPorfolio.experience">
@@ -22,7 +22,7 @@
                         </div>
             
                     </div>
-                    <app-edicion></app-edicion>
+                    <app-edicion [ngStyle]="{display:estadoApp.logueado?'inline':'none'}"></app-edicion>
                 </div>
             </li>
         </ul>

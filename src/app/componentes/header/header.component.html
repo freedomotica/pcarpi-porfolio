@@ -24,7 +24,7 @@
             </svg>
           </div>
         </div>
-          <app-edicion></app-edicion>
+          <app-edicion [ngStyle]="{display:estadoApp.logueado?'inline':'none'}"></app-edicion>
           <button type="button" (click)="login()" class="btn btn-success">{{botonLoginValue}}</button>
         
       </div>
@@ -34,14 +34,16 @@
       <div class="px-1" >
         <!-- Background image -->
         <div >
-         <app-edicion class="container-fluid d-flex justify-content-end" ></app-edicion>
-          <img class="img-fluid" [src]="miPorfolio.backImage" alt="" style="position: relative; top: -40px; z-index: -1;">
+         <div class="container-fluid d-flex justify-content-end">
+           <app-edicion [ngStyle]="{display:estadoApp.logueado?'inline':'none'}" ></app-edicion>
+         </div>
+          <img class="img-fluid" [src]="miPorfolio.backImage" alt="">
         </div>
         
         <div class="d-flex" style="position:relative; top: -100px;">
           <img  [src]="miPorfolio.avatar" class="rounded-circle mb-3" style="width: 200px;height: 200px;"
                   alt="Avatar" />
-           <app-edicion></app-edicion>
+          <app-edicion [ngStyle]="{display:estadoApp.logueado?'inline':'none'}"></app-edicion>
         </div>
        
       </div>
@@ -55,7 +57,7 @@
                 <p class="text-muted">{{miPorfolio.position}} <span class="badge bg-primary">{{miPorfolio.budge}}</span></p>
                 <p class="text-muted">{{miPorfolio.ubicacion}}</p>
               </div>
-              <app-edicion></app-edicion>
+              <app-edicion [ngStyle]="{display:estadoApp.logueado?'inline':'none'}"></app-edicion>
             </div>
             <app-acerca-de class="mx-4 px-4"></app-acerca-de>
         </div>

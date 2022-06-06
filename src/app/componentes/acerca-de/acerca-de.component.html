@@ -1,6 +1,6 @@
 <div class="acerca_de">
     <div class="d-flex">
-        <h4>Acerca de</h4><app-edicion></app-edicion>
+        <h4>Acerca de</h4><app-edicion [ngStyle]="{display:estadoApp.logueado?'inline':'none'}"></app-edicion>
     </div>
     <p>{{miPorfolio.about}}</p>
 </div>
