@@ -19,6 +19,7 @@ import { PorfolioService } from './servicios/porfolio.service';
 import { CoreModule } from './core/core/core.module';
 import { EstadoService } from './servicios/estado.service';
 import { EdicionComponent } from './componentes/edicion/edicion.component';
+import { NavbarComponent } from './componentes/navbar/navbar.component';
 
 
 
@@ -34,7 +35,8 @@ import { EdicionComponent } from './componentes/edicion/edicion.component';
     LogrosComponent,
     SkillsComponent,
     FooterComponent,
-    EdicionComponent
+    EdicionComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

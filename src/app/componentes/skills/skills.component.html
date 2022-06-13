@@ -1,6 +1,6 @@
 <div class="border border-ligth rounded-3 m-1 p-2">
     <div class="d-flex">
-        <h4 class="skill-header">Hard and Soft Skills</h4><app-edicion [ngStyle]="{display:estadoApp.logueado?'inline':'none'}"></app-edicion>
+        <h4 class="skill-header">Hard and Soft Skills</h4><app-edicion [ngStyle]="{display:estadoApp.logueado?'inline':'none'}"(editarEvent)="editEvent1()" (deleteEvent)="deleteEvent1()"></app-edicion>
     </div>
     <div class="px-5" *ngFor="let skillItem of miPorfolio.skill">
         <div class="container-fluid d-flex">
@@ -14,7 +14,7 @@
                 </div>
             </div>
             
-            <app-edicion [ngStyle]="{display:estadoApp.logueado?'inline':'none'}"></app-edicion>
+            <app-edicion [ngStyle]="{display:estadoApp.logueado?'inline':'none'}"(editarEvent)="editEvent2()" (deleteEvent)="deleteEvent2()"></app-edicion>
             
         </div>
     </div>

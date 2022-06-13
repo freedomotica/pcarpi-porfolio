@@ -38,5 +38,23 @@ export class ExperienciaComponent implements OnInit {
     this.suscription.unsubscribe();
   }
 
+  editEvent1(){
+    console.log('edit evento 1 experiencia');
+    
+  }
+
+  deleteEvent1(){
+    console.log('evento 1 eliminar experiencia');
+    
+  }
+  editEvent2(){
+    console.log('edit evento 2 experiencia');
+    
+  }
+
+  deleteEvent2(){
+    console.log('evento eliminar 2 experiencia');
+    
+  }
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { IappEstado } from 'src/app/estado/Iapp.estado';
 import { EstadoService } from 'src/app/servicios/estado.service';
@@ -11,6 +11,9 @@ import { EstadoService } from 'src/app/servicios/estado.service';
 export class EdicionComponent implements OnInit {
   estadoApp!:IappEstado;
   suscription!:Subscription;
+  
+  @Output() editarEvent = new EventEmitter<string>();
+  @Output() deleteEvent = new EventEmitter<string>();
   
   constructor(private estadoObs:EstadoService) { }
 
@@ -30,6 +33,14 @@ export class EdicionComponent implements OnInit {
     this.suscription.unsubscribe();
   }
   
+  newEditEvento(){
+    this.editarEvent.emit()
+        
+  }
+  newDeleteEvento(){
+    this.deleteEvent.emit()
+        
+  }
   
 
 }

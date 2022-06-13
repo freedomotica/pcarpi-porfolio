@@ -38,4 +38,22 @@ export class EducacionComponent implements OnInit {
     ngOnDestroy(){
       this.suscription.unsubscribe();
     }
+    editEvent1(){
+      console.log('edit evento 1 educacion');
+      
+    }
+  
+    deleteEvent1(){
+      console.log('evento 1 eliminar educacion');
+      
+    }
+    editEvent2(){
+      console.log('edit evento 2 educacion');
+      
+    }
+  
+    deleteEvent2(){
+      console.log('evento eliminar 2 educacion');
+      
+    }
 }
