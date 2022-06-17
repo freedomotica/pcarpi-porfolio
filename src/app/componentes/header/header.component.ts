@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, Renderer2, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { IappEstado } from 'src/app/estado/Iapp.estado';
@@ -20,16 +20,19 @@ export class HeaderComponent implements OnInit, OnDestroy {
   
   estadoApp!:IappEstado;
   suscription!:Subscription
-
-  
+  @ViewChild("MyModal") modal!: ElementRef;
+  @ViewChild("MySpinner") spinner!: ElementRef;
+  imagen = "";
   
   constructor(private datosPorfolio: PorfolioService, 
               private rutas: Router,
-              private estadoObs:EstadoService
+              private estadoObs:EstadoService,
+              private renderer: Renderer2
               ) { 
                 
                   this.datosPorfolio.obtenerDatos().subscribe(data=>{
                   this.miPorfolio = data;
+                  this.imagen = 'data:image/jpg;base64,'+ data.avatar.imagen;
                   console.log(data);
                   
                   });
@@ -52,13 +55,41 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.suscription.unsubscribe();
   }
 
-  editEvent(){
-    console.log('edit evento link red');
+  editEvent1(){
+    this.renderer.addClass(this.modal.nativeElement,"show");
+    this.renderer.setStyle(this.modal.nativeElement,'display','block');
+
     
   }
 
-  deleteEvent(){
-    console.log('evento eliminar link red');
+  deleteEvent1(){
+    console.log('evento eliminar info personal');
+    
+  }
+  modalHide(){
+    this.renderer.removeClass(this.modal.nativeElement,"show");
+    this.renderer.setStyle(this.modal.nativeElement,'display','none');
+  }
+  modalGuardar(){
+
+    var body = {
+                name:this.miPorfolio.name,
+                position: this.miPorfolio.position,
+                backImage:this.miPorfolio.backImage,
+                ubicacion:this.miPorfolio.ubicacion,
+                about:this.miPorfolio.about,
+                budge:this.miPorfolio.budge
+              }
+    var bodyJson = JSON.stringify(body);
+        
+    var id = this.miPorfolio.id
+    this.datosPorfolio.newPersona(bodyJson,id).subscribe(data=>{
+                  
+                  console.log(data);
+                  this.renderer.addClass(this.spinner.nativeElement,"visually-hidden")
+                  
+                  });
+    this.renderer.removeClass(this.spinner.nativeElement,"visually-hidden")
     
   }
 }

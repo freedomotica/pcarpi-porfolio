@@ -1,8 +1,13 @@
+import { Byte } from "@angular/compiler/src/util";
 import { ImiPorfolio } from "./ImiPorfolio";
 
 export class MiPorfolio implements ImiPorfolio{
     about: string = '';
-    avatar: string ='';
+    avatar!: {
+        id:number,
+        name:string,
+        imagen:Byte[]
+    };
     backImage: string = '';
     budge: string = '';
     educacion: any[] = new Array();

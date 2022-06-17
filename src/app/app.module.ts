@@ -1,5 +1,5 @@
 import { LOCALE_ID, NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 
@@ -20,6 +20,10 @@ import { CoreModule } from './core/core/core.module';
 import { EstadoService } from './servicios/estado.service';
 import { EdicionComponent } from './componentes/edicion/edicion.component';
 import { NavbarComponent } from './componentes/navbar/navbar.component';
+import { AgregarComponent } from './componentes/agregar/agregar.component';
+import { EliminarComponent } from './componentes/eliminar/eliminar.component';
+
+
 
 
 
@@ -36,14 +40,18 @@ import { NavbarComponent } from './componentes/navbar/navbar.component';
     SkillsComponent,
     FooterComponent,
     EdicionComponent,
-    NavbarComponent
+    NavbarComponent,
+    AgregarComponent,
+    EliminarComponent
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    CoreModule
+    CoreModule,
+    FormsModule
   ],
   providers: [PorfolioService,
               {provide:HTTP_INTERCEPTORS,useClass:InterceptorService, multi:true},

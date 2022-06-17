@@ -1,3 +1,37 @@
+<!-- Modal -->
+<div class="modal fade" #MyModal id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Informacion Personal</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="modalHide()"></button>
+      </div>
+      <div class="modal-body">
+        <div class="d-flex flex-column">
+          <label for="">Nombre</label>
+          <input type="text" [(ngModel)]="miPorfolio.name">
+          <label for="">Posicion</label>
+          <input type="text" [(ngModel)]="miPorfolio.position">
+          <label for="">ubicacion</label>
+          <input type="text" [(ngModel)]="miPorfolio.ubicacion">
+          <label for="">Budge</label>
+          <input type="text" [(ngModel)]="miPorfolio.budge">
+        </div>
+        
+        <div #MySpinner class="spinner-border visually-hidden" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="modalHide()">Cerrar</button>
+        <button type="button" class="btn btn-primary" (click)="modalGuardar()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+
 <header class="border border-ligth rounded-3">
    <!-- Navbar -->
   <app-navbar></app-navbar>
@@ -12,7 +46,7 @@
     </div>
     
     <div class="d-flex" style="position:relative; top: -100px;">
-      <img  [src]="miPorfolio.avatar" class="rounded-circle mb-3" style="width: 200px;height: 200px;"
+      <img  [src]="imagen" class="rounded-circle mb-3" style="width: 200px;height: 200px;"
               alt="Avatar" />
       <app-edicion [ngStyle]="{display:estadoApp.logueado?'inline':'none'}"></app-edicion>
     </div>
@@ -28,7 +62,7 @@
             <p class="text-muted">{{miPorfolio.position}} <span class="badge bg-primary">{{miPorfolio.budge}}</span></p>
             <p class="text-muted">{{miPorfolio.ubicacion}}</p>
           </div>
-          <app-edicion [ngStyle]="{display:estadoApp.logueado?'inline':'none'}"></app-edicion>
+          <app-edicion [ngStyle]="{display:estadoApp.logueado?'inline':'none'}" (editarEvent)="editEvent1()" ></app-edicion>
         </div>
         <app-acerca-de class="mx-4 px-4"></app-acerca-de>
     </div>

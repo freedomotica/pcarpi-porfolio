@@ -4,16 +4,17 @@ import { IappEstado } from 'src/app/estado/Iapp.estado';
 import { EstadoService } from 'src/app/servicios/estado.service';
 
 @Component({
-  selector: 'app-edicion',
-  templateUrl: './edicion.component.html',
-  styleUrls: ['./edicion.component.css']
+  selector: 'app-agregar',
+  templateUrl: './agregar.component.html',
+  styleUrls: ['./agregar.component.css']
 })
-export class EdicionComponent implements OnInit {
+export class AgregarComponent implements OnInit {
+
   estadoApp!:IappEstado;
   suscription!:Subscription;
   
-  @Output() editarEvent = new EventEmitter<string>();
-
+  @Output() addEvent = new EventEmitter<string>();
+ 
   
   constructor(private estadoObs:EstadoService) { }
 
@@ -33,11 +34,11 @@ export class EdicionComponent implements OnInit {
     this.suscription.unsubscribe();
   }
   
-  newEditEvento(){
-    this.editarEvent.emit()
+  newAddEvento(){
+    this.addEvent.emit()
         
   }
-
+ 
   
 
 }

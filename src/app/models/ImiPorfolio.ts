@@ -1,7 +1,12 @@
+import { Byte } from "@angular/compiler/src/util";
 
 export interface ImiPorfolio{
     about: string;
-    avatar: string;
+    avatar: {
+        id:number,
+        name:string,
+        imagen:Byte[]
+    };
     backImage: string;
     budge: string;
     educacion: Array<any>;
