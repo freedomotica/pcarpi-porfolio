@@ -61,7 +61,10 @@ export class AcercaDeComponent implements OnInit {
                 backImage:this.miPorfolio.backImage,
                 ubicacion:this.miPorfolio.ubicacion,
                 about:this.miPorfolio.about,
-                budge:this.miPorfolio.budge
+                budge:this.miPorfolio.budge,
+                whatsapp:this.miPorfolio.whatsapp,
+                facebook:this.miPorfolio.facebook,
+                linkedin:this.miPorfolio.linkedin
               }
     var bodyJson = JSON.stringify(body);
         
