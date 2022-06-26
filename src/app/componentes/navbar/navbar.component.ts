@@ -1,9 +1,11 @@
-import { APP_BOOTSTRAP_LISTENER, Component, ElementRef, NgModule, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, NgModule, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { IappEstado } from 'src/app/estado/Iapp.estado';
 import { ImiPorfolio } from 'src/app/models/ImiPorfolio';
+
 import { MiPorfolio } from 'src/app/models/MiPorfolio';
+
 import { EstadoService } from 'src/app/servicios/estado.service';
 import { PorfolioService } from 'src/app/servicios/porfolio.service';
 
@@ -18,10 +20,12 @@ import { PorfolioService } from 'src/app/servicios/porfolio.service';
 export class NavbarComponent implements OnInit {
 
   miPorfolio:ImiPorfolio = new MiPorfolio();
+  
   botonLoginValue!:string;
   estadoApp!:IappEstado;
   suscription!:Subscription;
   @ViewChild("MyModal") modal!: ElementRef;
+  @ViewChild("MySpinner") spinner!: ElementRef;
   
   constructor(private datosPorfolio: PorfolioService, 
               private rutas: Router,
@@ -31,6 +35,7 @@ export class NavbarComponent implements OnInit {
                 
                   this.datosPorfolio.obtenerDatos().subscribe(data=>{
                   this.miPorfolio = data;
+                  
                   
                   });
               }
@@ -82,7 +87,28 @@ export class NavbarComponent implements OnInit {
     this.renderer.setStyle(this.modal.nativeElement,'display','none');
   }
   modalGuardar(){
-    console.log('modalGuardar');
+    var body = {
+      name:this.miPorfolio.name,
+      position: this.miPorfolio.position,
+      backImage:this.miPorfolio.backImage,
+      ubicacion:this.miPorfolio.ubicacion,
+      about:this.miPorfolio.about,
+      budge:this.miPorfolio.budge,
+      whatsapp:this.miPorfolio.whatsapp,
+      facebook:this.miPorfolio.facebook,
+      linkedin:this.miPorfolio.linkedin
+      
+    }
+var bodyJson = JSON.stringify(body);
+
+var id = this.miPorfolio.id
+this.datosPorfolio.newPersona(bodyJson,id).subscribe(data=>{
+        
+        console.log(data);
+        this.renderer.addClass(this.spinner.nativeElement,"visually-hidden")
+        
+        });
+this.renderer.removeClass(this.spinner.nativeElement,"visually-hidden")
     
   }
 }

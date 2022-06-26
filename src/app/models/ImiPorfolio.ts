@@ -1,12 +1,9 @@
-import { Byte } from "@angular/compiler/src/util";
+
+import { Avatar } from "./Avatar";
+
 
 export interface ImiPorfolio{
     about: string;
-    avatar: {
-        id:number,
-        name:string,
-        imagen:Byte[]
-    };
     backImage: string;
     budge: string;
     educacion: Array<any>;
@@ -17,4 +14,8 @@ export interface ImiPorfolio{
     proyectos: Array<any>;
     skill: Array<any>;
     ubicacion: string;
+    whatsapp: string;
+    facebook: string;
+    linkedin: string;
+    avatar:Avatar;
 }

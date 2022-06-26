@@ -60,7 +60,9 @@ export class InicioSessionComponent implements OnInit, OnDestroy {
     this.autenticacionService.IniciarSesion(this.form.value).subscribe(data =>{
       
       var payloads = JSON.parse(data.payloads)//payloads trae los datos como json
+      console.log(payloads);
       
+      if(payloads.token){
       sessionStorage.setItem('currentUser',JSON.stringify(payloads));//guardo en sessionStorage como string
       this.autenticacionService.currenUserSubject.next(payloads);
       
@@ -68,6 +70,9 @@ export class InicioSessionComponent implements OnInit, OnDestroy {
       this.estadoObs.updateEstado(this.estadoApp);
 
       this.rutas.navigate(['/porfolio'])
+      }else{
+        this.rutas.navigate(['/login'])
+      }
     })
   }
 
