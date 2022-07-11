@@ -6,7 +6,7 @@ import { ImiPorfolio } from 'src/app/models/ImiPorfolio';
 import { MiPorfolio } from 'src/app/models/MiPorfolio';
 import { EstadoService } from 'src/app/servicios/estado.service';
 import { PorfolioService } from 'src/app/servicios/porfolio.service';
-
+import { DomSanitizer } from '@angular/platform-browser';
 
 
 @Component({
@@ -14,6 +14,7 @@ import { PorfolioService } from 'src/app/servicios/porfolio.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
+
 export class HeaderComponent implements OnInit, OnDestroy {
 
   miPorfolio:ImiPorfolio = new MiPorfolio();
@@ -21,12 +22,17 @@ export class HeaderComponent implements OnInit, OnDestroy {
   estadoApp!:IappEstado;
   suscription!:Subscription
   @ViewChild("MyModal") modal!: ElementRef;
+  @ViewChild("MyModalAvatar") modalAvatar!: ElementRef;
   @ViewChild("MySpinner") spinner!: ElementRef;
+  fileImagen!:Blob;
+  imageUrl?:string;
+  base64:string = 'Base64...'
   imagen = "";
   
   constructor(private datosPorfolio: PorfolioService, 
               private rutas: Router,
               private estadoObs:EstadoService,
+              private sanit: DomSanitizer,
               private renderer: Renderer2
               ) { 
                 
@@ -36,6 +42,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
                   console.log(data);
                   
                   });
+                 
               }
   
   ngOnInit(): void {
@@ -44,13 +51,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
       estadoApp =>{
         this.estadoApp = estadoApp;
         
-        console.log('navbar suscription',this.estadoApp);
-        
         }
       )
     
-    
   }
+
   ngOnDestroy(){
     this.suscription.unsubscribe();
   }
@@ -62,14 +67,27 @@ export class HeaderComponent implements OnInit, OnDestroy {
     
   }
 
+  editEvent2(){
+    this.renderer.addClass(this.modalAvatar.nativeElement,"show");
+    this.renderer.setStyle(this.modalAvatar.nativeElement,'display','block');
+            
+  }
+
   deleteEvent1(){
     console.log('evento eliminar info personal');
     
   }
+
   modalHide(){
     this.renderer.removeClass(this.modal.nativeElement,"show");
     this.renderer.setStyle(this.modal.nativeElement,'display','none');
   }
+
+  modalAvatarHide(){
+    this.renderer.removeClass(this.modalAvatar.nativeElement,"show");
+    this.renderer.setStyle(this.modalAvatar.nativeElement,'display','none');
+  }
+
   modalGuardar(){
 
     var body = {
@@ -94,5 +112,38 @@ export class HeaderComponent implements OnInit, OnDestroy {
                   });
     this.renderer.removeClass(this.spinner.nativeElement,"visually-hidden")
     
+  }
+  fileOnChange(event:any){
+    
+    this.fileImagen = event.target.files[0];
+    /* configuracion de la propiedad src de la etiqueta img del modal de modificacion de avatar */
+    this.imageUrl = this.sanit.bypassSecurityTrustUrl(window.URL.createObjectURL(this.fileImagen)) as string;
+
+  }
+
+  
+  modalAvatarGuardar(){
+    
+    this.datosPorfolio.updateAvatar(this.fileImagen,this.miPorfolio.avatar.id).subscribe(data=>{
+      console.log(data);
+      
+      this.miPorfolio.avatar = data
+      /* actualizo src de img del avatar del header */
+      this.imagen = 'data:image/jpg;base64,'+ data.imagen;
+      /* actualizo estado de porfolio para las subscripciones */
+      this.datosPorfolio.updateMiPorfolio(this.miPorfolio)
+    })
+  
+  }
+
+  convertFileToBase64(file:Blob){
+    let reader = new FileReader();
+    reader.readAsDataURL(file as Blob);
+    return new Promise((resolve,reject)=>{
+      reader.onloadend = ()=>resolve(reader.result as string)
+           
+      reader.onerror = ()=>reject
+    })
+
   }
 }

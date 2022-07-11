@@ -46,7 +46,7 @@ export class NavbarComponent implements OnInit {
       estadoApp =>{
         this.estadoApp = estadoApp;
         this.estadoApp.logueado? this.botonLoginValue='Logout': this.botonLoginValue='Login'
-        console.log('header suscription',this.estadoApp);
+        
         
         }
       )
@@ -104,7 +104,7 @@ var bodyJson = JSON.stringify(body);
 var id = this.miPorfolio.id
 this.datosPorfolio.newPersona(bodyJson,id).subscribe(data=>{
         
-        console.log(data);
+        
         this.renderer.addClass(this.spinner.nativeElement,"visually-hidden")
         
         });

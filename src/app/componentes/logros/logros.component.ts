@@ -29,7 +29,7 @@ export class LogrosComponent implements OnInit  {
       this.suscription = this.estadoObs.estadoApp$.subscribe(
         estadoApp =>{
           this.estadoApp = estadoApp;
-          console.log('logros suscription',this.estadoApp);
+          
           
           }
         )

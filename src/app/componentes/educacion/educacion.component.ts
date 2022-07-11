@@ -30,7 +30,7 @@ export class EducacionComponent implements OnInit {
       this.suscription = this.estadoObs.estadoApp$.subscribe(
         estadoApp =>{
           this.estadoApp = estadoApp;
-          console.log('educacion suscription',this.estadoApp);
+          
           
           }
         )

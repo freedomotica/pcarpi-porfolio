@@ -29,7 +29,7 @@ export class ExperienciaComponent implements OnInit {
     this.suscription = this.estadoObs.estadoApp$.subscribe(
       estadoApp =>{
         this.estadoApp = estadoApp;
-        console.log('experience suscription',this.estadoApp);
+        
         
         }
       )

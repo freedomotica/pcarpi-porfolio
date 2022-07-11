@@ -27,7 +27,7 @@ export class SkillsComponent implements OnInit {
     this.suscription = this.estadoObs.estadoApp$.subscribe(
       estadoApp =>{
         this.estadoApp = estadoApp;
-        console.log('skill suscription',this.estadoApp);
+        
         
         }
       )

@@ -35,6 +35,12 @@ export class PorfolioService {
     return this.http.put(`${environment.urlApi}/update/persona/${id}`,body,httpOptions);
   }
 
+  updateAvatar(imagen:any,id:number):Observable<any>{
+    var fd = new FormData();
+    fd.append('imagen', imagen);
+    return this.http.put(`${environment.urlApi}/update/avatar/${id}`,fd);
+  }
+
   /* -------------------- */
   
   /* Suscripciones */
