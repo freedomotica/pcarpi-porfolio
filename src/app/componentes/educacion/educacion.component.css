@@ -4,6 +4,7 @@
 }
 .items-list{
     list-style-type: none;
+    padding-left: 0px;
 }
 .edu-header{
     text-align: left;

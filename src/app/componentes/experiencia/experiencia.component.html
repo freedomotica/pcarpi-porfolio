@@ -1,3 +1,37 @@
+<!-- Modal -->
+<div class="modal fade" #MyModal id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Experiencia</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="modalHide()"></button>
+        </div>
+        <div class="modal-body">
+          <div class="d-flex flex-column">
+            <label for="">Compañia</label>
+            <input type="text" [(ngModel)]="experienceModal.company">
+            <label for="">Posición</label>
+            <input type="text" [(ngModel)]="experienceModal.position">
+            <label for="">Modalidad</label>
+            <input type="text" [(ngModel)]="experienceModal.mode">
+            <label for="">Tiempo Transcurrido</label>
+            <input type="text" [(ngModel)]="experienceModal.timeElapsed">
+            
+          </div>
+          
+          <div #MySpinner class="spinner-border visually-hidden" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="modalHide()">Cerrar</button>
+          <button type="button" class="btn btn-primary" (click)="modalGuardar()">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal -->
 <div class=" border border-ligth d-flex rounded-3 m-1 p-2">
     <div class="container-fluid">
         <div class="d-flex">
@@ -5,14 +39,14 @@
         </div>
         <ul class="items-list">
             <li *ngFor="let experience of miPorfolio.experience">
-                <div class=" d-flex justify-content-between">
-                    <div class="d-flex">
-                        <div class="logo-image-container px-2">
+                <div class=" container">
+                    <div class="row">
+                        <div class=" col-3 col-sm-3 logo-image-container">
                             <img
                                 class="img-thumbnail" height="100px" width="100px"
                                 [src]="experience.logo" alt="">
                         </div>
-                        <div class="list-info">
+                        <div class="col col-sm-9 list-info">
                             <div>
                                 <h5>{{experience.company}}</h5>
                                 <p>{{experience.position}}</p>
@@ -22,7 +56,9 @@
                         </div>
             
                     </div>
-                    <app-edicion [ngStyle]="{display:estadoApp.logueado?'inline':'none'}"(editarEvent)="editEvent2()" (deleteEvent)="deleteEvent2()"></app-edicion>
+                    <app-edicion [ngStyle]="{display:estadoApp.logueado?'inline':'none'}"
+                        (editarEvent)="editEvent1(experience)" >
+                    </app-edicion>
                 </div>
             </li>
         </ul>

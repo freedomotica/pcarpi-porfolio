@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { IappEstado } from 'src/app/estado/Iapp.estado';
+import { Experience } from 'src/app/models/Experience';
 import { ImiPorfolio } from 'src/app/models/ImiPorfolio';
 import { MiPorfolio } from 'src/app/models/MiPorfolio';
 import { EstadoService } from 'src/app/servicios/estado.service';
@@ -14,9 +15,14 @@ import { PorfolioService } from 'src/app/servicios/porfolio.service';
 export class ExperienciaComponent implements OnInit {
   miPorfolio:ImiPorfolio = new MiPorfolio();
   estadoApp!:IappEstado;
-  suscription!:Subscription
+  suscription!:Subscription;
+  experienceModal = new Experience();
+  @ViewChild("MyModal") modal!: ElementRef;
+  @ViewChild("MySpinner") spinner!: ElementRef;
+
   constructor(private datosPorfolio: PorfolioService,
-              private estadoObs: EstadoService
+              private estadoObs: EstadoService,
+              private renderer:Renderer2
               ) {
 
     this.datosPorfolio.obtenerDatos().subscribe(data =>{
@@ -42,22 +48,31 @@ export class ExperienciaComponent implements OnInit {
     console.log('agregar  experiencia');
     
   }
-  editEvent1(){
-    console.log('edit evento 1 experiencia');
+  editEvent1(experience:any){
+
+    this.renderer.addClass(this.modal.nativeElement,"show");
+    this.renderer.setStyle(this.modal.nativeElement,'display','block');
+    this.experienceModal = experience
+    console.log(this.experienceModal);
+    
+
     
   }
 
-  deleteEvent1(){
-    console.log('evento 1 eliminar experiencia');
-    
+  modalHide(){
+    this.renderer.removeClass(this.modal.nativeElement,"show");
+    this.renderer.setStyle(this.modal.nativeElement,'display','none');
   }
-  editEvent2(){
-    console.log('edit evento 2 experiencia');
-    
-  }
+  modalGuardar(){
+   
 
-  deleteEvent2(){
-    console.log('evento eliminar 2 experiencia');
+    this.datosPorfolio.updateExperiencia(JSON.stringify(this.experienceModal),this.experienceModal.id).subscribe(data=>{
+                  
+                  console.log(data);
+                  this.renderer.addClass(this.spinner.nativeElement,"visually-hidden")
+                  
+                  });
+    this.renderer.removeClass(this.spinner.nativeElement,"visually-hidden")
     
   }
 

@@ -84,16 +84,21 @@
   
   <!-- Info-personal -->
   
-    <div class="d-flex px-3">
-        <div class="d-flex">
-          <div class="">
-            <h5 class="mb-2"><strong>{{miPorfolio.name}}</strong></h5>
-            <p class="text-muted">{{miPorfolio.position}} <span class="badge bg-primary">{{miPorfolio.budge}}</span></p>
-            <p class="text-muted">{{miPorfolio.ubicacion}}</p>
+    <div class="container">
+      <div class="row">
+          <!--Datos  -->
+          <div class="col-12 col-sm-3">
+            <div class="">
+              <app-edicion [ngStyle]="{display:estadoApp.logueado?'inline':'none'}" (editarEvent)="editEvent1()" ></app-edicion>
+              <h5 class="mb-2"><strong>{{miPorfolio.name}}</strong></h5>
+              <p class="text-muted">{{miPorfolio.position}} <span class="badge bg-primary">{{miPorfolio.budge}}</span></p>
+              <p class="text-muted">{{miPorfolio.ubicacion}}</p>
+            </div>
+            
           </div>
-          <app-edicion [ngStyle]="{display:estadoApp.logueado?'inline':'none'}" (editarEvent)="editEvent1()" ></app-edicion>
-        </div>
-        <app-acerca-de class="mx-4 px-4"></app-acerca-de>
+          <!-- About -->
+          <app-acerca-de class="col-12 col-sm-8 "></app-acerca-de>
+      </div>
     </div>
       
     

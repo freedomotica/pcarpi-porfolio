@@ -12,7 +12,7 @@ export class EdicionComponent implements OnInit {
   estadoApp!:IappEstado;
   suscription!:Subscription;
   
-  @Output() editarEvent = new EventEmitter<string>();
+  @Output() editarEvent: EventEmitter<any> = new EventEmitter();
 
   
   constructor(private estadoObs:EstadoService) { }

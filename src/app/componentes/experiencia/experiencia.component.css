@@ -4,7 +4,9 @@
 }
 .items-list{
     list-style-type: none;
+    padding-left: 0px;
 }
+
 .exp-header{
     text-align: left;
 }

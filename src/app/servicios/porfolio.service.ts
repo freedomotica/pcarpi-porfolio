@@ -40,6 +40,14 @@ export class PorfolioService {
     fd.append('imagen', imagen);
     return this.http.put(`${environment.urlApi}/update/avatar/${id}`,fd);
   }
+  updateExperiencia(experiencia:any,id:number):Observable<any>{
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+      })
+    };
+    return this.http.put(`${environment.urlApi}/update/experience/${id}`,experiencia,httpOptions);
+  }
 
   /* -------------------- */
   

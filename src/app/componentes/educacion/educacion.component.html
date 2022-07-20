@@ -5,14 +5,14 @@
         </div>
         <ul class="items-list">
             <li *ngFor="let educacion of miPorfolio.educacion">
-                <div class="d-flex justify-content-between">
-                    <div class="d-flex">
-                        <div class="logo-image-container px-2">
+                <div class="container">
+                    <div class="row">
+                        <div class=" col-3 col-sm-3 logo-image-container">
                             <img
                                 class="img-thumbnail" height="100px" width="100px"
                                 [src]="educacion.logo" alt="">
                         </div>
-                        <div class="list-info">
+                        <div class="col col-sm-9 list-info">
                             <div>
                                 <h5>{{educacion.school}}</h5>
                                 <p>{{educacion.career}}</p>
