@@ -1,5 +1,6 @@
 
 import { Avatar } from "./Avatar";
+import { Experience } from "./Experience";
 
 
 export interface ImiPorfolio{
@@ -7,7 +8,7 @@ export interface ImiPorfolio{
     backImage: string;
     budge: string;
     educacion: Array<any>;
-    experience: Array<any>;
+    experience: Array<Experience>;
     id: number;
     name: string;
     position: string;

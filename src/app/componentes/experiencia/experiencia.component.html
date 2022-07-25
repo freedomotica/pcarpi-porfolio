@@ -6,28 +6,33 @@
           <h5 class="modal-title" id="exampleModalLabel">Experiencia</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="modalHide()"></button>
         </div>
-        <div class="modal-body">
-          <div class="d-flex flex-column">
-            <label for="">Compañia</label>
-            <input type="text" [(ngModel)]="experienceModal.company">
-            <label for="">Posición</label>
-            <input type="text" [(ngModel)]="experienceModal.position">
-            <label for="">Modalidad</label>
-            <input type="text" [(ngModel)]="experienceModal.mode">
-            <label for="">Tiempo Transcurrido</label>
-            <input type="text" [(ngModel)]="experienceModal.timeElapsed">
-            
-          </div>
+        <form [formGroup]="form" (ngSubmit)="onEnviar($event)" class="m-5">
+          <div class="modal-body">
           
-          <div #MySpinner class="spinner-border visually-hidden" role="status">
-            <span class="visually-hidden">Loading...</span>
-          </div>
+            <div class="d-flex flex-column">
+              <label for="">Compañia</label>
+              <input type="text"  formControlName="company" >
+              <label for="">Posición</label>
+              <input type="text" formControlName="position">
+              <label for="">Modalidad</label>
+              <input type="text"   formControlName="mode">
+              <label for="">Tiempo Transcurrido</label>
+              <input type="text" formControlName="timeElapsed">
+              <img #imgModalExperience [src]="imageUrl" alt="" width="150px">
+              <label for="">Seleccionar Archivo</label>
+              <input #file type="file" name="" id="" (change)="fileOnChange($event)" formControlName="imagen">
+            </div>
+          
+            <div #MySpinner class="spinner-border visually-hidden" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
           
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="modalHide()">Cerrar</button>
-          <button type="button" class="btn btn-primary" (click)="modalGuardar()">Guardar</button>
+          <button type="submit" class="btn btn-primary" >Guardar</button>
         </div>
+      </form>
       </div>
     </div>
   </div>
@@ -40,25 +45,29 @@
         <ul class="items-list">
             <li *ngFor="let experience of miPorfolio.experience">
                 <div class=" container">
-                    <div class="row">
-                        <div class=" col-3 col-sm-3 logo-image-container">
-                            <img
-                                class="img-thumbnail" height="100px" width="100px"
-                                [src]="experience.logo" alt="">
-                        </div>
-                        <div class="col col-sm-9 list-info">
-                            <div>
-                                <h5>{{experience.company}}</h5>
-                                <p>{{experience.position}}</p>
-                                <p>{{experience.mode}}</p>
-                                <p>{{experience.timeElapsed}}</p>
-                            </div>
-                        </div>
-            
-                    </div>
-                    <app-edicion [ngStyle]="{display:estadoApp.logueado?'inline':'none'}"
+                  <app-edicion [ngStyle]="{display:estadoApp.logueado?'inline':'none'}"
                         (editarEvent)="editEvent1(experience)" >
-                    </app-edicion>
+                  </app-edicion>
+                  <app-eliminar [ngStyle]="{display:estadoApp.logueado?'inline':'none'}"
+                        (deleteEvent)="deleteEvent(experience)" >
+                  </app-eliminar>
+                  <div class="row">
+                      <div class=" col-3 col-sm-3 logo-image-container">
+                          <img
+                              class="img-thumbnail" height="100px" width="100px"
+                              [src]="experience.srcImagen" alt="">
+                      </div>
+                      <div class="col col-sm-9 list-info">
+                          <div>
+                              <h5>{{experience.company}}</h5>
+                              <p>{{experience.position}}</p>
+                              <p>{{experience.mode}}</p>
+                              <p>{{experience.timeElapsed}}</p>
+                          </div>
+                      </div>
+          
+                    </div>
+                    
                 </div>
             </li>
         </ul>

@@ -1,3 +1,4 @@
+import { Byte } from "@angular/compiler/src/util"
 
 
 export interface Iexperience{
@@ -6,7 +7,8 @@ export interface Iexperience{
        
     position:   String,
     company:    String,
-    logo:       String,
+    imagen:Byte[],
+    srcImagen:string,
     mode:       String
     dateStart:  String,
     dateEnd:    String,
