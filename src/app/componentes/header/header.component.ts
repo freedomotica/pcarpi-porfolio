@@ -132,8 +132,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
       this.imagen = 'data:image/jpg;base64,'+ data.imagen;
       /* actualizo estado de porfolio para las subscripciones */
       this.datosPorfolio.updateMiPorfolio(this.miPorfolio)
+      this.renderer.addClass(this.spinner.nativeElement,"visually-hidden")
     })
-  
+    this.renderer.removeClass(this.spinner.nativeElement,"visually-hidden")
   }
 
   convertFileToBase64(file:Blob){

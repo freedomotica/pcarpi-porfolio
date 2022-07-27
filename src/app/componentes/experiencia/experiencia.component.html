@@ -45,12 +45,14 @@
         <ul class="items-list">
             <li *ngFor="let experience of miPorfolio.experience">
                 <div class=" container">
-                  <app-edicion [ngStyle]="{display:estadoApp.logueado?'inline':'none'}"
-                        (editarEvent)="editEvent1(experience)" >
-                  </app-edicion>
-                  <app-eliminar [ngStyle]="{display:estadoApp.logueado?'inline':'none'}"
-                        (deleteEvent)="deleteEvent(experience)" >
-                  </app-eliminar>
+                  <div class="d-flex justify-content-end">
+                    <app-edicion [ngStyle]="{display:estadoApp.logueado?'inline':'none'}"
+                          (editarEvent)="editEvent1(experience)" >
+                    </app-edicion>
+                    <app-eliminar [ngStyle]="{display:estadoApp.logueado?'inline':'none'}"
+                          (deleteEvent)="deleteEvent(experience)" >
+                    </app-eliminar>
+                  </div>
                   <div class="row">
                       <div class=" col-3 col-sm-3 logo-image-container">
                           <img

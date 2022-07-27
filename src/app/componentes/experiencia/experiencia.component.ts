@@ -9,6 +9,7 @@ import { EstadoService } from 'src/app/servicios/estado.service';
 import { PorfolioService } from 'src/app/servicios/porfolio.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
+
 @Component({
   selector: 'app-experiencia',
   templateUrl: './experiencia.component.html',
@@ -21,6 +22,7 @@ export class ExperienciaComponent implements OnInit {
   experienceModal = new Experience();
   @ViewChild("MyModal") modal!: ElementRef;
   @ViewChild("MySpinner") spinner!: ElementRef;
+  @ViewChild("file") file!: ElementRef;
   fileImagen!:Blob;
   imageUrl?:string;
    
@@ -76,9 +78,8 @@ export class ExperienciaComponent implements OnInit {
     exper.imagen!
 
     this.datosPorfolio.newExperiencia(exper).subscribe(data=>{
-      console.log('new experience ok');
       /* actualizo para renderizar nueva item experience */
-      this.miPorfolio.experience.push(exper)
+      this.miPorfolio.experience.push(data)
       
     });
     
@@ -134,6 +135,8 @@ export class ExperienciaComponent implements OnInit {
           this.miPorfolio.experience[index]=data
           /* actualizo src de img del avatar del header */
        this.miPorfolio.experience[index].srcImagen = 'data:image/jpg;base64,'+ data.imagen;
+       
+       
         }
       })
        
@@ -143,11 +146,13 @@ export class ExperienciaComponent implements OnInit {
   }
 
   fileOnChange(event:any){
-    
+        
+    if(event.target.files.length!==0){
     this.fileImagen = event.target.files[0];
     /* configuracion de la propiedad src de la etiqueta img del modal de modificacion de avatar */
     this.imageUrl = this.sanit.bypassSecurityTrustUrl(window.URL.createObjectURL(this.fileImagen)) as string;
-    
+    }
+           
   }
   srcImagen(fileImagen:any){
     return this.sanit.bypassSecurityTrustUrl(window.URL.createObjectURL(fileImagen)) as string;
