@@ -1,4 +1,4 @@
-<!-- Modal Informacion personal -->
+<!-- Modal Avatar -->
 <div class="modal fade" #MyModalAvatar id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -22,6 +22,39 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="modalAvatarHide()">Cerrar</button>
         <button type="button" class="btn btn-primary" (click)="modalAvatarGuardar()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<!-- Modal backImage -->
+<div class="modal fade" #MyModalBackImage id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Imagen de fondo</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="modalBackImageHide()"></button>
+      </div>
+      <div class="modal-body">
+        <div class="d-flex flex-column">
+<!--           <label for="">imagen</label>
+          <input type="text" [(ngModel)]="miPorfolio.backImage"> -->
+          <select name=""[(ngModel)]="miPorfolio.backImage">
+            <option value="/assets/backImage.jpg">Imagen 1</option>
+            <option value="/assets/backImage1.jpg" selected>Imagen 2</option>
+            <option value="/assets/backImage2.jpg">Imagen 3</option>
+            <option value="/assets/backImage3.jpg">Imagen 4</option>
+          </select>
+        </div>
+        
+        <div #MySpinnerBackImage class="spinner-border visually-hidden" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="modalBackImageHide()">Cerrar</button>
+        <button type="button" class="btn btn-primary" (click)="modalGuardar()">Guardar</button>
       </div>
     </div>
   </div>
@@ -69,7 +102,7 @@
     <!-- Background image -->
     <div >
       <div class="container-fluid d-flex justify-content-end">
-        <app-edicion [ngStyle]="{display:estadoApp.logueado?'inline':'none'}" ></app-edicion>
+        <app-edicion [ngStyle]="{display:estadoApp.logueado?'inline':'none'}"(editarEvent)="editBackImageEvent()" ></app-edicion>
       </div>
       <img class="img-fluid" [src]="miPorfolio.backImage" alt="">
     </div>

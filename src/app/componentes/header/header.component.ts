@@ -23,7 +23,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   suscription!:Subscription
   @ViewChild("MyModal") modal!: ElementRef;
   @ViewChild("MyModalAvatar") modalAvatar!: ElementRef;
+  @ViewChild("MyModalBackImage") modalBackImage!: ElementRef;
   @ViewChild("MySpinner") spinner!: ElementRef;
+  @ViewChild("MySpinnerBackImage") spinnerBackImage!: ElementRef;
   fileImagen!:Blob;
   imageUrl?:string;
   base64:string = 'Base64...'
@@ -66,6 +68,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
     
   }
+  editBackImageEvent(){
+    this.renderer.addClass(this.modalBackImage.nativeElement,"show");
+    this.renderer.setStyle(this.modalBackImage.nativeElement,'display','block');
+
+    
+  }
 
   editEvent2(){
     this.renderer.addClass(this.modalAvatar.nativeElement,"show");
@@ -87,7 +95,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.renderer.removeClass(this.modalAvatar.nativeElement,"show");
     this.renderer.setStyle(this.modalAvatar.nativeElement,'display','none');
   }
-
+  modalBackImageHide(){
+    this.renderer.removeClass(this.modalBackImage.nativeElement,"show");
+    this.renderer.setStyle(this.modalBackImage.nativeElement,'display','none');
+  }
   modalGuardar(){
 
     var body = {
@@ -108,9 +119,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
                   
                   console.log(data);
                   this.renderer.addClass(this.spinner.nativeElement,"visually-hidden")
+                  this.renderer.addClass(this.spinnerBackImage.nativeElement,"visually-hidden")
                   
                   });
     this.renderer.removeClass(this.spinner.nativeElement,"visually-hidden")
+    this.renderer.removeClass(this.spinnerBackImage.nativeElement,"visually-hidden")
     
   }
   fileOnChange(event:any){

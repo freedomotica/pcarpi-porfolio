@@ -4,9 +4,11 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AppEstado } from '../estado/app.estado';
 import { IappEstado } from '../estado/Iapp.estado';
+import { Educacion } from '../models/Educacion';
 import { Experience } from '../models/Experience';
 import { ImiPorfolio } from '../models/ImiPorfolio';
 import { MiPorfolio } from '../models/MiPorfolio';
+import { Skill } from '../models/skill';
 
 @Injectable({
   providedIn: 'root'
@@ -56,7 +58,35 @@ export class PorfolioService {
       
     return this.http.post(`${environment.urlApi}/new/experience`,Exper);
   }
-  
+
+    /* Endpoint Educacion */
+
+    updateEducacion (formulario:any,id:number):Observable<any>{
+      
+      return this.http.put(`${environment.urlApi}/update/educacion/${id}`,formulario);
+    }
+    deleteEducacion (id:number):Observable<any>{
+        
+      return this.http.delete(`${environment.urlApi}/delete/educacion/${id}`);
+    }
+    newEducacion(Exper:Educacion):Observable<any>{
+        
+      return this.http.post(`${environment.urlApi}/new/educacion`,Exper);
+    }
+   /* Endpoint Skill */
+
+   updateSkill (formulario:any,id:number):Observable<any>{
+      
+    return this.http.put(`${environment.urlApi}/update/skill/${id}`,formulario);
+  }
+  deleteSkill (id:number):Observable<any>{
+      
+    return this.http.delete(`${environment.urlApi}/delete/skill/${id}`);
+  }
+  newSkill(Exper:Skill):Observable<any>{
+      
+    return this.http.post(`${environment.urlApi}/new/skill`,Exper);
+  }
   /* -------------------- */
   
   /* Suscripciones */

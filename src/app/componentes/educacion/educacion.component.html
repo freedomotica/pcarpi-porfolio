@@ -1,30 +1,84 @@
-<div class="educacion border border-ligth rounded-3 m-1 p-2">
+<!-- Modal -->
+<div class="modal fade" #MyModal id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Experiencia</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="modalHide()"></button>
+        </div>
+        <form [formGroup]="form" (ngSubmit)="onEnviar($event)" class="m-5">
+          <div class="modal-body">
+          
+            <div class="d-flex flex-column">
+              <label for="">Escuela</label>
+              <input type="text"  formControlName="school" >
+              <label for="">Titulo</label>
+              <input type="text" formControlName="title">
+              <label for="">Carrera</label>
+              <input type="text" formControlName="career">
+              <label for="">Score</label>
+              <input type="text" formControlName="score">
+              <label for="">Fecha comienzo</label>
+              <input type="text" formControlName="dateStart">
+              <label for="">Fecha fin</label>
+              <input type="text" formControlName="dateEnd">
+              <img #imgModalEducacion [src]="imageUrl" alt="" width="150px">
+              <label for="">Seleccionar Archivo</label>
+              <input #file type="file" name="" id="" (change)="fileOnChange($event)" formControlName="imagen">
+            </div>
+          
+            <div #MySpinner class="spinner-border visually-hidden" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="modalHide()">Cerrar</button>
+          <button type="submit" class="btn btn-primary" >Guardar</button>
+        </div>
+      </form>
+      </div>
+    </div>
+  </div>
+  <!-- Modal -->
+<div class=" border border-ligth d-flex rounded-3 m-1 p-2">
     <div class="container-fluid">
         <div class="d-flex">
-            <h4 class="edu-header">Educación</h4><app-edicion [ngStyle]="{display:estadoApp.logueado?'inline':'none'}"(editarEvent)="editEvent1()" (deleteEvent)="deleteEvent1()"></app-edicion>
+            <h4 class="exp-header">Educacion</h4><app-agregar [ngStyle]="{display:estadoApp.logueado?'inline':'none'}"(addEvent)="addEvent()"></app-agregar>
         </div>
         <ul class="items-list">
             <li *ngFor="let educacion of miPorfolio.educacion">
-                <div class="container">
-                    <div class="row">
-                        <div class=" col-3 col-sm-3 logo-image-container">
-                            <img
-                                class="img-thumbnail" height="100px" width="100px"
-                                [src]="educacion.logo" alt="">
-                        </div>
-                        <div class="col col-sm-9 list-info">
-                            <div>
-                                <h5>{{educacion.school}}</h5>
-                                <p>{{educacion.career}}</p>
-                                <p>Titulo: {{educacion.title}} - Promedio: {{educacion.score}}</p>
-                                <p>{{educacion.dateStart}} - {{educacion.dateEnd}}</p>
-                            </div>
-                        </div>
+                <div class=" container">
+                  <div class="d-flex justify-content-end">
+                    <app-edicion [ngStyle]="{display:estadoApp.logueado?'inline':'none'}"
+                          (editarEvent)="editEvent1(educacion)" >
+                    </app-edicion>
+                    <app-eliminar [ngStyle]="{display:estadoApp.logueado?'inline':'none'}"
+                          (deleteEvent)="deleteEvent(educacion)" >
+                    </app-eliminar>
+                  </div>
+                  <div class="row">
+                      <div class=" col-3 col-sm-3 logo-image-container">
+                          <img
+                              class="img-thumbnail" height="100px" width="100px"
+                              [src]="educacion.srcImagen" alt="">
+                      </div>
+                      <div class="col col-sm-9 list-info">
+                          <div>
+                              <h5>{{educacion.school}}</h5>
+                              <p>{{educacion.title}}</p>
+                              <p>{{educacion.career}}</p>
+                              <p>{{educacion.score}}</p>
+                              <p>{{educacion.dateStart}} - {{educacion.dateEnd}} </p>
+                          </div>
+                      </div>
+          
                     </div>
-                    <app-edicion [ngStyle]="{display:estadoApp.logueado?'inline':'none'}" (editarEvent)="editEvent2()" (deleteEvent)="deleteEvent2()"></app-edicion>
+                    
                 </div>
-
             </li>
         </ul>
     </div>
+    
 </div>
+
