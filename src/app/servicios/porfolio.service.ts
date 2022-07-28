@@ -8,7 +8,7 @@ import { Educacion } from '../models/Educacion';
 import { Experience } from '../models/Experience';
 import { ImiPorfolio } from '../models/ImiPorfolio';
 import { MiPorfolio } from '../models/MiPorfolio';
-import { Skill } from '../models/skill';
+import { Skill } from '../models/Skill';
 
 @Injectable({
   providedIn: 'root'

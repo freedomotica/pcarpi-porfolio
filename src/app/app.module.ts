@@ -22,6 +22,7 @@ import { EdicionComponent } from './componentes/edicion/edicion.component';
 import { NavbarComponent } from './componentes/navbar/navbar.component';
 import { AgregarComponent } from './componentes/agregar/agregar.component';
 import { EliminarComponent } from './componentes/eliminar/eliminar.component';
+import { SpinnerService } from './servicios/spinner.service';
 
 
 
@@ -55,7 +56,8 @@ import { EliminarComponent } from './componentes/eliminar/eliminar.component';
   ],
   providers: [PorfolioService,
               {provide:HTTP_INTERCEPTORS,useClass:InterceptorService, multi:true},
-              EstadoService
+              EstadoService,
+              SpinnerService
             ],
   bootstrap: [AppComponent]
 })

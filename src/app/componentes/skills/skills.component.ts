@@ -1,8 +1,8 @@
-import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Subscription } from 'rxjs';
 import { IappEstado } from 'src/app/estado/Iapp.estado';
-import { Skill } from 'src/app/models/skill';
+import { Skill } from 'src/app/models/Skill';
 import { ImiPorfolio } from 'src/app/models/ImiPorfolio';
 import { MiPorfolio } from 'src/app/models/MiPorfolio';
 import { EstadoService } from 'src/app/servicios/estado.service';
@@ -65,6 +65,8 @@ export class SkillsComponent implements OnInit {
   ngOnDestroy(){
     this.suscription.unsubscribe();
   }
+
+
 
   addEvent(){
     var skl = new Skill();
